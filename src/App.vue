@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import Header from './components/Header.vue'
+import NavBar from './components/NavBar.vue';
 </script>
 
 <template>
   <div class="app">
+    <NavBar />
     <router-view></router-view>
-    <Header/>
   </div>
 </template>
 
 <style scoped>
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-.app{
+.app {
   margin: 0;
   padding: 0;
 }
