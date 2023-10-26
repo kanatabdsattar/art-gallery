@@ -9,8 +9,7 @@ const searchQuery = () => {
 };
 </script>
 <template>
-  <header>
-    <img src="../icons/background.png" alt="background" class="background" />
+  <div class="main">
     <div class="loop">
       <input
         type="text"
@@ -20,12 +19,17 @@ const searchQuery = () => {
       />
       <Search class="icon" @click="searchQuery" />
     </div>
-  </header>
+  </div>
 </template>
 <style scoped>
-header {
-  overflow: hidden;
+.main {
+  background-image: url('../icons/background.png');
+  width: 100vw;
+  height: 30vh;
+  display: flex;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 .background {
   position: relative;
@@ -33,16 +37,14 @@ header {
 .loop {
   position: absolute;
   align-items: center;
-  bottom: 60%;
-  left: 30%;
   display: flex;
-  width: 500px;
+  width: 40vw;
   height: 50px;
   background-color: white;
 }
 .loop > input {
-  padding-left: 10px;
   flex: 1;
+  padding-left: 10px;
   height: 40px;
   border: none;
   outline: none;
@@ -52,5 +54,10 @@ input::placeholder {
 }
 .icon {
   padding-right: 10px;
+}
+@media (max-width: 750px) {
+  .loop {
+    width: 90vw;
+  }
 }
 </style>

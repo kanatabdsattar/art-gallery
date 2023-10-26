@@ -2,8 +2,8 @@
 import Chosen from './icon/Chosen.vue';
 </script>
 <template>
-  <header>
-    <nav>
+  <div class="main">
+    <div class="toolbar">
       <router-link to="/">
         <img src="../icons/OBJECTS.png" alt="logo" class="logo" />
       </router-link>
@@ -11,20 +11,28 @@ import Chosen from './icon/Chosen.vue';
         <Chosen />
         <p class="selected">Избранный</p>
       </router-link>
-    </nav>
-  </header>
+    </div>
+  </div>
 </template>
 
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-header {
+.main {
   background-color: black;
+  font-family: 'Roboto', sans-serif;
+
 }
 nav {
   display: flex;
+  width: 100vw;
   justify-content: space-between;
   margin-left: 50px;
   margin-right: 50px;
+}
+.toolbar{
+  margin: 0 15px;
+  display: flex;
+  justify-content: space-between;
 }
 button {
   background: transparent;

@@ -2,7 +2,7 @@
 import { ref, type Ref, onMounted } from 'vue';
 import axios from 'axios';
 import { Image } from '../types/index';
-import { useRoute } from 'vue-router';
+import { useRoute } from 'vue-router';   
 import Chosen from '../components/icon/Chosen.vue';
 import Download from '../components/icon/Download.vue';
 
@@ -16,20 +16,25 @@ onMounted(async () => {
 
   try {
     const response = await axios.get(
-      `https://api.unsplash.com/photos/${route.params.id}?client_id=${accessKey}`
+      `https://api.unsplash.com/photos/${route.params.id}?client_id=${accessKey}`   
     );
     image.value = response.data;
     user.value = response.data.user.name;
-  } catch (error) {
+  } catch (error) {  
     console.error('Error fetching image:', error);
   }
 });
+function getChosenImageIds() {
+  const ids = localStorage.getItem('chosenImageIds');
+  return ids ? JSON.parse(ids) : [];
+}
 
+chosenImageIds.value = getChosenImageIds();
 const handleChosenClick = () => {
   if (image.value) {
     chosenImageIds.value.push(image.value.id);
 
-    localStorage.setItem('id', JSON.stringify(chosenImageIds.value));
+    localStorage.setItem('chosenImageIds', JSON.stringify(chosenImageIds.value));
   }
 };
 </script>
@@ -66,6 +71,8 @@ const handleChosenClick = () => {
   </div>
 </template>
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .main {
   width: 100%;
   display: flex;
@@ -115,8 +122,13 @@ const handleChosenClick = () => {
   height: 100%;
 }
 .save {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
   background-color: white;
-  color: black;
   border-radius: 6px;
   background-color: #fff200;
 }

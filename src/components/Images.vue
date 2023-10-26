@@ -13,7 +13,7 @@ async function getRandomImages() {
   try {
     const response = await axios.get('https://api.unsplash.com/photos/random', {
       params: {
-        count: 8,
+        count: 9,
         client_id: '9_f3Z7k1T1rViSuGBEs1RAlr0MhdWdmwAgc5kKAB0eI',
       },
     });
@@ -27,12 +27,11 @@ async function search(text: string) {
   try {
     const response = await axios.get('https://api.unsplash.com/search/photos', {
       params: {
-        per_page: 8,
+        per_page: 9,
         client_id: '9_f3Z7k1T1rViSuGBEs1RAlr0MhdWdmwAgc5kKAB0eI',
         query: text,
       },
     });
-    console.log(response.data);
     searchImages.value = response.data.results;
   } catch (error) {
     console.log(error);
@@ -85,5 +84,11 @@ watch(
   height: 250px;
   width: 300px;
   object-fit: cover;
+}
+
+@media (max-width: 750px) {
+  .grid-container {
+    grid-template-columns: auto;
+  }
 }
 </style>

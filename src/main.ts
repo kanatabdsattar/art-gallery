@@ -20,7 +20,7 @@ const router = createRouter({
         {
             path:'/SelectedImages',
             component:SelectedImages
-        }
+        }   
     ]
 })
 
