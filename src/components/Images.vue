@@ -49,14 +49,14 @@ watch(
   <div v-if="text" class="grid-container">
     <div v-for="image in searchImages" :key="image.id" class="grid-item">
       <router-link :to="'/ImageInfo/' + image.id"
-        ><img :src="image.urls.small" :alt="image.alt_description" class="art"
+        ><img :src="image.urls.small" :alt="image.alt_description" class="art drop-in"
       /></router-link>
     </div>
   </div>
   <div v-else class="grid-container">
     <div v-for="image in randomImages" :key="image.id" class="grid-item">
       <router-link :to="'/ImageInfo/' + image.id"
-        ><img :src="image.urls.small" :alt="image.alt_description" class="art"
+        ><img :src="image.urls.small" :alt="image.alt_description" class="art drop-in"
       /></router-link>
     </div>
   </div>
@@ -84,6 +84,19 @@ watch(
   height: 250px;
   width: 300px;
   object-fit: cover;
+}
+.drop-in {
+  animation: drop-in 1s ease 350ms backwards;
+}
+@keyframes drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0px);
+  }
 }
 
 @media (max-width: 750px) {

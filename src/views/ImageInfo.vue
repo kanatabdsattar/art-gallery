@@ -136,7 +136,7 @@ const handleChosenClick = () => {
   z-index: -1;
 }
 .drop-in {
-  animation: drop-in 1s ease 200ms backwards;
+  animation: drop-in 1s ease 250ms backwards;
 }
 @keyframes drop-in {
   from {
