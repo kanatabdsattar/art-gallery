@@ -2,6 +2,7 @@
 import { ref, type Ref, onMounted } from 'vue';
 import axios from 'axios';
 import { Image } from '../types/index';
+
 function getChosenImageIds() {
   let ids = localStorage.getItem('chosenImageIds');
   ids = ids ? JSON.parse(ids) : [];
@@ -39,7 +40,7 @@ async function getChosenImages() {
 </script>
 <template>
   <div class="main">
-    <router-link to="/" class="back">
+    <button @click="$router.go(-1)" class="back">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="8"
@@ -55,7 +56,7 @@ async function getChosenImages() {
         />
       </svg>
       <p>Вернуться назад</p>
-    </router-link>
+    </button>
     <h1>Избранное</h1>
     <div class="grid-container">
       <div v-for="image in chosenImages" :key="image.id" class="grid-item">
@@ -81,13 +82,17 @@ h1 {
   gap: 10px;
 }
 .back {
+  background: transparent;
+  border: none;
   display: flex;
+  cursor: pointer;
   gap: 5px;
   align-items: center;
   font-size: 20px;
   text-decoration: none;
   color: #0075cd;
 }
+
 .grid-container {
   margin: 0 auto;
   gap: 20px;
@@ -109,5 +114,10 @@ h1 {
   height: 250px;
   width: 300px;
   object-fit: cover;
+}
+@media (max-width: 750px) {
+  .grid-container {
+    grid-template-columns: auto;
+  }
 }
 </style>
